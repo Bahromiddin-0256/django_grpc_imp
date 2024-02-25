@@ -7,7 +7,7 @@
 ### install requirements
 
 ```bash
-python3 -m venv env 
+python3 -m venv env
 source env/bin/activate
 pip install -r requirements/develop.text
 ```
@@ -55,5 +55,3 @@ python manage.py runserver
 pip install pre-commit
 pre-commit install
 ```
-
-

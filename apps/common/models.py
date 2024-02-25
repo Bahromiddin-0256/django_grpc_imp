@@ -32,3 +32,13 @@ class FrontendTranslation(BaseModel):
 
     def __str__(self):
         return str(self.key)
+
+
+class Data(BaseModel):
+    name = models.CharField(_("Name"), max_length=255)
+    description = models.TextField(_("Description"), blank=True, null=True)
+    data_json = models.JSONField(_("Data JSON"), blank=True, null=True)
+    
+    class Meta:
+        verbose_name = _("Data")
+        verbose_name_plural = _("Datas")

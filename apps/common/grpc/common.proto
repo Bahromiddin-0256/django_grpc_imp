@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package core.common;
+
+import "google/protobuf/struct.proto";
+
+service DataCreateController {
+    rpc Create(DataRequest) returns (DataResponse) {}
+}
+
+service DataListController {
+    rpc List(DataListRequest) returns (DataListResponse) {}
+}
+
+message DataListRequest {
+}
+
+message DataListResponse {
+    repeated DataResponse results = 1;
+}
+
+message DataRequest {
+    int32 id = 1;
+    string name = 2;
+    optional string description = 3;
+    optional google.protobuf.Struct data_json = 4;
+}
+
+message DataResponse {
+    int32 id = 1;
+    string created_at = 2;
+    string updated_at = 3;
+    string name = 4;
+    optional string description = 5;
+    optional google.protobuf.Struct data_json = 6;
+}
+

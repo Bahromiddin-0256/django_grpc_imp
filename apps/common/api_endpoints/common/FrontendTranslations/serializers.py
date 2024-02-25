@@ -1,5 +1,6 @@
-from apps.common import models
 from rest_framework import serializers
+
+from apps.common import models
 
 
 class FrontendTranslationSerializer(serializers.ModelSerializer):

@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 import environ
-
+# from django_socio_grpc.interceptors import LoggingInterceptor, AuthenticationInterceptor
 from core.jazzmin_conf import *  # noqa
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -54,16 +54,32 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
     "corsheaders",
     "modeltranslation",
+    "django_socio_grpc",
+    "rest_framework_simplejwt",
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework.authentication.SessionAuthentication",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
     "DEFAULT_FILTER_BACKENDS": (
         "django_filters.rest_framework.DjangoFilterBackend",
         "apps.text_services.filters.MultiSymbolSearchFilter",
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
+}
+
+GRPC_FRAMEWORK = {
+    "ROOT_HANDLERS_HOOK" : 'core.handlers.grpc_handlers',
+    "DEFAULT_FILTER_BACKENDS": (
+        # "django_filters.rest_framework.DjangoFilterBackend",
+        # "apps.text_services.filters.MultiSymbolSearchFilter",
+    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        # "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
