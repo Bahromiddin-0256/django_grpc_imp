@@ -1,4 +1,4 @@
-## Django boilerplate
+## Django Grpc Implementation with django-socio-grpc
 
 ## How to set up project
 
